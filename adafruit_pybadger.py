@@ -245,7 +245,7 @@ class PyBadger:
                                ``terminalio.FONT``.
 
         """
-        business_card_splash = displayio.Group(max_size=30)
+        business_card_splash = displayio.Group(max_size=5)
         self.display.show(business_card_splash)
         with open(image_name, "rb") as file_name:
             on_disk_bitmap = displayio.OnDiskBitmap(file_name)
@@ -257,7 +257,7 @@ class PyBadger:
             name_label = Label(name_font, text=name_string)
             (_, _, width, height) = name_label.bounding_box
             name_label.x = ((self.display.width // (2 * name_scale)) - width // 2)
-            name_label.y = int(height // (0.15 * name_scale))
+            name_label.y = self.display.height - 40*email_scale_two
             name_label.color = 0xFFFFFF
             name_group.append(name_label)
             business_card_splash.append(name_group)
@@ -267,7 +267,7 @@ class PyBadger:
             (_, _, width, height) = email_label_one.bounding_box
             email_label_one.width = self.display.width
             email_label_one.x = ((self.display.width // (2 * email_scale_one)) - width // 2)
-            email_label_one.y = int(height // (0.13 * email_scale_one))
+            email_label_one.y = self.display.height - 10*email_scale_one
             email_label_one.color = 0xFFFFFF
             email_group_one.append(email_label_one)
             business_card_splash.append(email_group_one)
@@ -277,7 +277,7 @@ class PyBadger:
             (_, _, width, height) = email_label_two.bounding_box
             email_label_two.width = self.display.width
             email_label_two.x = ((self.display.width // (2 * email_scale_two)) - width // 2)
-            email_label_two.y = int(height // (0.12 * email_scale_two))
+            email_label_two.y = self.display.height - 25*email_scale_two
             email_label_two.color = 0xFFFFFF
             email_group_two.append(email_label_two)
             business_card_splash.append(email_group_two)
